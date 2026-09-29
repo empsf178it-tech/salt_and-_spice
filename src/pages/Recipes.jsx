@@ -137,21 +137,55 @@ const Recipes = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="bg-ivory text-charcoal pt-28 pb-24 min-h-screen"
+      className="bg-ivory text-charcoal pb-24 min-h-screen"
     >
+      {/* CINEMATIC HERO SECTION WITH BACKGROUND IMAGE */}
+      <section className="min-h-[75vh] bg-charcoal text-ivory flex flex-col justify-center items-center text-center px-6 relative overflow-hidden pt-28 pb-16 mb-16">
+        <div className="absolute inset-0 z-0 opacity-35 pointer-events-none">
+          <img src={images.chef_plating || images.recipe5} alt="Chef Plating & Recipes" className="w-full h-full object-cover scale-105" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-charcoal/40 to-charcoal" />
+        </div>
+        <div className="relative z-10 max-w-4xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="inline-flex items-center space-x-2 border border-sand/30 bg-black/40 backdrop-blur-md px-4 py-1.5 rounded-full text-xs tracking-widest uppercase mb-6 text-sand"
+          >
+            <Sparkles className="w-3.5 h-3.5 text-mustard" />
+            <span>CULINARY MASTERCLASSES & PAIRINGS</span>
+          </motion.div>
+
+          <motion.h1 
+            initial={{ y: 40, opacity: 0 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="font-serif text-5xl sm:text-7xl md:text-8xl mb-6 text-ivory tracking-tight font-medium"
+          >
+            SEASON WITH<br/>
+            <span className="italic font-normal text-sand">INTENTION.</span>
+          </motion.h1>
+
+          <motion.p
+            initial={{ y: 30, opacity: 0 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="font-sans text-xs sm:text-sm tracking-widest max-w-xl mx-auto text-sand/80 font-light leading-relaxed uppercase"
+          >
+            Crafted recipes designed to highlight single-origin salts, smoked spices, and freshly milled peppercorns.
+          </motion.p>
+        </div>
+      </section>
+
       <div className="max-w-[1600px] mx-auto px-6 md:px-12">
-        {/* SECTION 1: HERO & FILTER BAR */}
+        {/* SECTION 1: SEARCH & FILTER BAR */}
         <section className="mb-16 border-b border-charcoal/10 pb-12">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8">
             <div>
-              <span className="font-sans text-xs tracking-[0.25em] text-spice uppercase font-semibold block mb-2">CULINARY KITCHEN</span>
-              <h1 className="font-serif text-5xl md:text-7xl text-charcoal">SEASON WITH INTENTION</h1>
-              <p className="font-sans text-sm text-charcoal/70 max-w-xl mt-3">
-                Crafted recipes designed to highlight single-origin salts, smoked spices, and freshly milled peppers.
-              </p>
+              <span className="font-sans text-xs tracking-[0.25em] text-spice uppercase font-semibold block mb-1">CULINARY KITCHEN</span>
+              <h2 className="font-serif text-3xl sm:text-4xl text-charcoal">EXPLORE RECIPES</h2>
             </div>
 
-            <div className="relative md:w-72">
+            <div className="relative md:w-80">
               <Search className="w-4 h-4 absolute left-4 top-1/2 -translate-y-1/2 text-charcoal/40" />
               <input 
                 type="text"

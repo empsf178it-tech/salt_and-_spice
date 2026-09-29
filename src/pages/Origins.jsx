@@ -59,13 +59,14 @@ const Origins = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="bg-charcoal text-sand overflow-hidden"
+      className="bg-ivory text-charcoal overflow-hidden"
       ref={containerRef}
     >
       {/* SECTION 1: HERO & TERROIR MAP NODES */}
-      <section className="min-h-[85vh] relative flex flex-col justify-center items-center text-center px-6 pt-28 pb-16 overflow-hidden">
-        <div className="absolute inset-0 z-0 opacity-30">
+      <section className="min-h-[85vh] bg-charcoal text-ivory relative flex flex-col justify-center items-center text-center px-6 pt-28 pb-16 overflow-hidden">
+        <div className="absolute inset-0 z-0 opacity-30 pointer-events-none">
           <img src={images.origin_salt} alt="Salt harvest" className="w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-charcoal/40 to-charcoal" />
         </div>
         <div className="relative z-10 max-w-4xl">
           <motion.span 
@@ -96,14 +97,14 @@ const Origins = () => {
       </section>
 
       {/* SECTION 2: INTERACTIVE HARVEST MAP EXPLORER */}
-      <section className="py-28 bg-black/40 border-y border-sand/15 px-6 md:px-12">
+      <section className="py-28 bg-ivory border-y border-charcoal/10 px-6 md:px-12">
         <div className="max-w-[1600px] mx-auto">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-16">
             <div>
-              <span className="font-sans text-xs tracking-[0.25em] text-sand uppercase font-semibold block mb-2">MICRO-CLIMATE EXPLORER</span>
-              <h2 className="font-serif text-4xl md:text-6xl text-ivory">HARVEST TERROIRS</h2>
+              <span className="font-sans text-xs tracking-[0.25em] text-spice uppercase font-semibold block mb-2">MICRO-CLIMATE EXPLORER</span>
+              <h2 className="font-serif text-4xl md:text-6xl text-charcoal">HARVEST TERROIRS</h2>
             </div>
-            <p className="font-sans text-xs tracking-widest text-sand/60 max-w-md mt-4 md:mt-0">
+            <p className="font-sans text-xs tracking-widest text-charcoal/70 max-w-md mt-4 md:mt-0">
               Click any location to reveal its unique soil composition, altitude, and climatic characteristics.
             </p>
           </div>
@@ -119,43 +120,43 @@ const Origins = () => {
                     onClick={() => setSelectedNode(node)}
                     className={`w-full text-left p-6 transition-all duration-300 border flex items-center justify-between ${
                       isActive 
-                        ? 'bg-sand text-charcoal border-sand shadow-lg' 
-                        : 'bg-sand/10 text-sand border-sand/20 hover:border-sand/40'
+                        ? 'bg-charcoal text-ivory border-charcoal shadow-lg' 
+                        : 'bg-sand/20 text-charcoal border-charcoal/15 hover:border-charcoal/40'
                     }`}
                   >
                     <div>
-                      <span className={`text-[10px] tracking-widest uppercase block font-sans ${isActive ? 'text-charcoal/70' : 'text-sand/50'}`}>
+                      <span className={`text-[10px] tracking-widest uppercase block font-sans ${isActive ? 'text-sand/70' : 'text-charcoal/50'}`}>
                         {node.product}
                       </span>
                       <h4 className="font-serif text-xl font-medium">{node.name}</h4>
                     </div>
-                    <MapPin className={`w-5 h-5 ${isActive ? 'text-spice' : 'text-sand/40'}`} />
+                    <MapPin className={`w-5 h-5 ${isActive ? 'text-mustard' : 'text-charcoal/40'}`} />
                   </button>
                 )
               })}
             </div>
 
             {/* Selected Terroir Detail Card */}
-            <div className="lg:col-span-7 bg-sand/10 border border-sand/20 p-8 md:p-12 relative flex flex-col md:flex-row gap-8 items-center">
-              <div className="w-full md:w-1/2 aspect-[4/5] overflow-hidden bg-black/40">
+            <div className="lg:col-span-7 bg-sand/20 border border-charcoal/15 p-8 md:p-12 relative flex flex-col md:flex-row gap-8 items-center shadow-sm">
+              <div className="w-full md:w-1/2 aspect-[4/5] overflow-hidden bg-charcoal/10">
                 <img src={selectedNode.img} alt={selectedNode.name} className="w-full h-full object-cover" />
               </div>
               <div className="w-full md:w-1/2 space-y-6">
                 <div>
-                  <span className="font-sans text-xs tracking-widest text-sand uppercase block mb-1">
+                  <span className="font-sans text-xs tracking-widest text-spice uppercase font-semibold block mb-1">
                     FEATURED HARVEST
                   </span>
-                  <h3 className="font-serif text-3xl md:text-4xl text-ivory">{selectedNode.product}</h3>
-                  <p className="font-sans text-xs text-sand/70">{selectedNode.name}</p>
+                  <h3 className="font-serif text-3xl md:text-4xl text-charcoal">{selectedNode.product}</h3>
+                  <p className="font-sans text-xs text-charcoal/70">{selectedNode.name}</p>
                 </div>
 
-                <div className="space-y-3 font-sans text-xs border-y border-sand/20 py-4">
-                  <div className="flex justify-between"><span className="text-sand/60">Altitude:</span> <span className="text-ivory font-medium">{selectedNode.altitude}</span></div>
-                  <div className="flex justify-between"><span className="text-sand/60">Micro-Climate:</span> <span className="text-ivory font-medium">{selectedNode.climate}</span></div>
-                  <div className="flex justify-between"><span className="text-sand/60">Trade Model:</span> <span className="text-sand font-medium">100% Direct Fair Co-op</span></div>
+                <div className="space-y-3 font-sans text-xs border-y border-charcoal/15 py-4">
+                  <div className="flex justify-between"><span className="text-charcoal/60">Altitude:</span> <span className="text-charcoal font-medium">{selectedNode.altitude}</span></div>
+                  <div className="flex justify-between"><span className="text-charcoal/60">Micro-Climate:</span> <span className="text-charcoal font-medium">{selectedNode.climate}</span></div>
+                  <div className="flex justify-between"><span className="text-charcoal/60">Trade Model:</span> <span className="text-spice font-medium">100% Direct Fair Co-op</span></div>
                 </div>
 
-                <p className="font-sans text-xs text-sand/80 leading-relaxed italic">
+                <p className="font-sans text-xs text-charcoal/80 leading-relaxed italic border-l-2 border-spice pl-3">
                   "Harvested by hand using centuries-old traditional methods without heavy mechanized equipment."
                 </p>
               </div>
@@ -167,8 +168,8 @@ const Origins = () => {
       {/* SECTION 3: DIRECT TRADE & REGENERATIVE COMMITMENTS */}
       <section className="py-32 px-6 md:px-12 max-w-[1600px] mx-auto">
         <div className="text-center max-w-xl mx-auto mb-16">
-          <span className="font-sans text-xs tracking-[0.25em] text-sand uppercase font-semibold block mb-2">ETHICAL BENCHMARKS</span>
-          <h2 className="font-serif text-4xl md:text-5xl text-ivory">REGENERATIVE FARMING COMMITMENT</h2>
+          <span className="font-sans text-xs tracking-[0.25em] text-spice uppercase font-semibold block mb-2">ETHICAL BENCHMARKS</span>
+          <h2 className="font-serif text-4xl md:text-5xl text-charcoal">REGENERATIVE FARMING COMMITMENT</h2>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -178,40 +179,40 @@ const Origins = () => {
             { num: '45+', title: 'FARMING CO-OPS', desc: 'Supporting heritage farming communities across 12 countries.' },
             { num: '100%', title: 'ZERO PLASTIC', desc: 'Shipped in recyclable amber glass jars and biodegradable refill pouches.' }
           ].map((stat, i) => (
-            <div key={i} className="p-8 bg-sand/10 border border-sand/20 text-center">
-              <span className="font-serif text-5xl text-sand font-bold block mb-2">{stat.num}</span>
-              <h4 className="font-sans text-xs tracking-widest text-ivory uppercase font-semibold mb-2">{stat.title}</h4>
-              <p className="font-sans text-xs text-sand/70 leading-relaxed">{stat.desc}</p>
+            <div key={i} className="p-8 bg-sand/20 border border-charcoal/15 text-center shadow-sm">
+              <span className="font-serif text-5xl text-spice font-bold block mb-2">{stat.num}</span>
+              <h4 className="font-sans text-xs tracking-widest text-charcoal uppercase font-semibold mb-2">{stat.title}</h4>
+              <p className="font-sans text-xs text-charcoal/70 leading-relaxed">{stat.desc}</p>
             </div>
           ))}
         </div>
       </section>
 
       {/* SECTION 4: BATCH TRACEABILITY LOOKUP TOOL */}
-      <section className="py-28 bg-sand/10 border-y border-sand/20 px-6 md:px-12">
+      <section className="py-28 bg-sand/20 border-y border-charcoal/15 px-6 md:px-12">
         <div className="max-w-[1200px] mx-auto">
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="font-sans text-xs tracking-[0.25em] text-sand uppercase font-semibold block mb-2">TRANSPARENCY PORTAL</span>
-            <h2 className="font-serif text-4xl md:text-5xl text-ivory mb-4">BATCH TRACEABILITY LOOKUP</h2>
-            <p className="font-sans text-xs text-sand/70">
+            <span className="font-sans text-xs tracking-[0.25em] text-spice uppercase font-semibold block mb-2">TRANSPARENCY PORTAL</span>
+            <h2 className="font-serif text-4xl md:text-5xl text-charcoal mb-4">BATCH TRACEABILITY LOOKUP</h2>
+            <p className="font-sans text-xs text-charcoal/70">
               Enter your jar's batch code found on the back label to inspect lab analysis, harvest date, and farm details.
             </p>
           </div>
 
           <form onSubmit={handleBatchSearch} className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto mb-12">
             <div className="relative flex-1">
-              <Search className="w-4 h-4 absolute left-4 top-1/2 -translate-y-1/2 text-sand/40" />
+              <Search className="w-4 h-4 absolute left-4 top-1/2 -translate-y-1/2 text-charcoal/40" />
               <input 
                 type="text" 
                 value={batchQuery}
                 onChange={(e) => setBatchQuery(e.target.value)}
                 placeholder="e.g. SALT-FR-2026"
-                className="w-full bg-black/40 border border-sand/30 pl-11 pr-4 py-3.5 font-sans text-xs tracking-wider text-ivory focus:outline-none focus:border-sand placeholder:text-sand/30 uppercase"
+                className="w-full bg-ivory border border-charcoal/20 pl-11 pr-4 py-3.5 font-sans text-xs tracking-wider text-charcoal focus:outline-none focus:border-charcoal placeholder:text-charcoal/40 uppercase"
               />
             </div>
             <button 
               type="submit" 
-              className="bg-sand text-charcoal hover:bg-ivory px-8 py-3.5 font-sans text-xs tracking-widest font-semibold transition-colors"
+              className="bg-charcoal text-ivory hover:bg-spice px-8 py-3.5 font-sans text-xs tracking-widest font-semibold transition-colors"
             >
               TRACE BATCH
             </button>
@@ -219,12 +220,12 @@ const Origins = () => {
 
           {/* Quick preset buttons */}
           <div className="flex justify-center items-center gap-3 text-xs font-sans mb-12">
-            <span className="text-sand/50">TRY EXAMPLE BATCHES:</span>
+            <span className="text-charcoal/50">TRY EXAMPLE BATCHES:</span>
             {Object.keys(sampleBatches).map(code => (
               <button 
                 key={code}
                 onClick={() => { setBatchQuery(code); setActiveBatchResult(sampleBatches[code]); }}
-                className="text-sand border-b border-sand/30 hover:border-sand pb-0.5"
+                className="text-charcoal border-b border-charcoal/30 hover:border-spice pb-0.5 font-medium"
               >
                 #{code}
               </button>
@@ -233,42 +234,42 @@ const Origins = () => {
 
           {/* Result Card */}
           {activeBatchResult ? (
-            <div className="bg-black/60 border border-sand/30 p-8 md:p-12 shadow-2xl">
-              <div className="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-sand/20 pb-6 mb-8 gap-4">
+            <div className="bg-ivory border border-charcoal/20 p-8 md:p-12 shadow-xl">
+              <div className="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-charcoal/15 pb-6 mb-8 gap-4">
                 <div>
-                  <span className="font-sans text-[10px] tracking-widest text-mustard uppercase font-semibold block mb-1">
+                  <span className="font-sans text-[10px] tracking-widest text-spice uppercase font-semibold block mb-1">
                     VERIFIED BATCH AUDIT REPORT
                   </span>
-                  <h3 className="font-serif text-3xl text-ivory">{activeBatchResult.origin}</h3>
+                  <h3 className="font-serif text-3xl text-charcoal">{activeBatchResult.origin}</h3>
                 </div>
-                <div className="flex items-center space-x-2 bg-sand/20 border border-sand/30 px-4 py-2 rounded-full text-xs font-sans text-sand">
-                  <CheckCircle2 className="w-4 h-4 text-mustard" />
+                <div className="flex items-center space-x-2 bg-sand/30 border border-charcoal/15 px-4 py-2 rounded-full text-xs font-sans text-charcoal font-medium">
+                  <CheckCircle2 className="w-4 h-4 text-spice" />
                   <span>Harvest Date: {activeBatchResult.harvestDate}</span>
                 </div>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 font-sans text-xs mb-8">
-                <div className="p-4 bg-sand/5 border border-sand/10">
-                  <span className="text-sand/50 block mb-1">FARMING GUILD</span>
-                  <span className="font-semibold text-ivory">{activeBatchResult.farmer}</span>
+                <div className="p-4 bg-sand/20 border border-charcoal/10">
+                  <span className="text-charcoal/50 block mb-1">FARMING GUILD</span>
+                  <span className="font-semibold text-charcoal">{activeBatchResult.farmer}</span>
                 </div>
-                <div className="p-4 bg-sand/5 border border-sand/10">
-                  <span className="text-sand/50 block mb-1">LAB SALINITY / ESSENTIAL OIL</span>
-                  <span className="font-semibold text-ivory">{activeBatchResult.salinity || activeBatchResult.essentialOil || activeBatchResult.smokeType}</span>
+                <div className="p-4 bg-sand/20 border border-charcoal/10">
+                  <span className="text-charcoal/50 block mb-1">LAB SALINITY / ESSENTIAL OIL</span>
+                  <span className="font-semibold text-charcoal">{activeBatchResult.salinity || activeBatchResult.essentialOil || activeBatchResult.smokeType}</span>
                 </div>
-                <div className="p-4 bg-sand/5 border border-sand/10">
-                  <span className="text-sand/50 block mb-1">QUALITY SPEC</span>
-                  <span className="font-semibold text-ivory">{activeBatchResult.moisture || activeBatchResult.size || activeBatchResult.astringency}</span>
+                <div className="p-4 bg-sand/20 border border-charcoal/10">
+                  <span className="text-charcoal/50 block mb-1">QUALITY SPEC</span>
+                  <span className="font-semibold text-charcoal">{activeBatchResult.moisture || activeBatchResult.size || activeBatchResult.astringency}</span>
                 </div>
               </div>
 
-              <p className="font-sans text-xs text-sand/80 italic leading-relaxed border-l-2 border-sand pl-4">
+              <p className="font-sans text-xs text-charcoal/80 italic leading-relaxed border-l-2 border-spice pl-4">
                 "{activeBatchResult.notes}"
               </p>
             </div>
           ) : (
-            <div className="text-center py-12 bg-black/40 border border-sand/20">
-              <p className="font-serif text-xl text-sand/70">Batch code "{batchQuery}" not found in current harvest database.</p>
+            <div className="text-center py-12 bg-ivory border border-charcoal/15">
+              <p className="font-serif text-xl text-charcoal/70">Batch code "{batchQuery}" not found in current harvest database.</p>
             </div>
           )}
         </div>
@@ -278,8 +279,8 @@ const Origins = () => {
       <section className="py-32 px-6 md:px-12 max-w-[1600px] mx-auto">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16">
           <div>
-            <span className="font-sans text-xs tracking-[0.25em] text-sand uppercase font-semibold block mb-2">FIELD JOURNAL</span>
-            <h2 className="font-serif text-4xl md:text-6xl text-ivory">NOTES FROM THE TERROIR</h2>
+            <span className="font-sans text-xs tracking-[0.25em] text-spice uppercase font-semibold block mb-2">FIELD JOURNAL</span>
+            <h2 className="font-serif text-4xl md:text-6xl text-charcoal">NOTES FROM THE TERROIR</h2>
           </div>
         </div>
 
@@ -289,14 +290,14 @@ const Origins = () => {
             { title: 'The Sun-Drying Mats of Malabar', date: 'March 2026', img: images.origin_pepper, excerpt: 'Peppercorns undergo 7 days of constant hand-turning under tropical heat.' },
             { title: 'Slow Smoking with Holm Oak Firewood', date: 'November 2025', img: images.origin_chili, excerpt: 'Continuous oak embers impart a rich mahogany sheen and velvety sweetness.' }
           ].map((note, i) => (
-            <div key={i} className="w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1.333rem)] bg-sand/10 border border-sand/20 p-6 flex flex-col justify-between group">
+            <div key={i} className="w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1.333rem)] bg-sand/20 border border-charcoal/15 p-6 flex flex-col justify-between group shadow-sm">
               <div>
-                <div className="aspect-[4/3] overflow-hidden mb-6 bg-black/40">
+                <div className="aspect-[4/3] overflow-hidden mb-6 bg-charcoal/10">
                   <img src={note.img} alt={note.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                 </div>
-                <span className="font-sans text-[10px] tracking-widest text-sand/50 block mb-2">{note.date}</span>
-                <h3 className="font-serif text-2xl text-ivory mb-3">{note.title}</h3>
-                <p className="font-sans text-xs text-sand/70 leading-relaxed">{note.excerpt}</p>
+                <span className="font-sans text-[10px] tracking-widest text-charcoal/50 block mb-2">{note.date}</span>
+                <h3 className="font-serif text-2xl text-charcoal mb-3">{note.title}</h3>
+                <p className="font-sans text-xs text-charcoal/70 leading-relaxed">{note.excerpt}</p>
               </div>
             </div>
           ))}

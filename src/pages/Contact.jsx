@@ -3,10 +3,67 @@ import { useState } from 'react'
 import { images } from '../data/images'
 import { MapPin, Mail, Phone, ChevronDown, Check, Send, Store, Building2, HelpCircle } from 'lucide-react'
 
+const InstagramIcon = ({ className = "w-4 h-4" }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+  </svg>
+)
+
+const FacebookIcon = ({ className = "w-4 h-4" }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+  </svg>
+)
+
+const TwitterIcon = ({ className = "w-4 h-4" }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
+  </svg>
+)
+
+const YoutubeIcon = ({ className = "w-4 h-4" }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+    <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+  </svg>
+)
+
+const PinterestIcon = ({ className = "w-4 h-4" }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M12 2C6.48 2 2 6.48 2 12c0 4.24 2.63 7.87 6.32 9.33-.09-.79-.17-2 .04-2.87.19-.79 1.22-5.18 1.22-5.18s-.31-.63-.31-1.56c0-1.46.85-2.55 1.9-2.55.9 0 1.33.67 1.33 1.48 0 .9-.57 2.26-.87 3.51-.25 1.05.53 1.91 1.56 1.91 1.87 0 3.31-1.97 3.31-4.82 0-2.52-1.81-4.28-4.39-4.28-2.99 0-4.75 2.24-4.75 4.56 0 .9.35 1.87.79 2.4.09.1.1.2.07.33l-.3 1.23c-.05.2-.16.24-.37.15-1.39-.65-2.26-2.68-2.26-4.32 0-3.52 2.56-6.75 7.37-6.75 3.87 0 6.88 2.76 6.88 6.44 0 3.84-2.42 6.94-5.78 6.94-1.13 0-2.19-.59-2.55-1.28l-.7 2.65c-.25.96-.93 2.16-1.39 2.9C10.22 21.84 11.09 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2z"/>
+  </svg>
+)
+
 const showrooms = [
-  { id: 'london', city: 'LONDON MAYFAIR', address: '42 Mount Street, Mayfair, W1K 2RX', hours: 'Mon–Sat: 10:00 – 19:00', phone: '+44 20 7946 0912', img: images.showroom_london },
-  { id: 'tokyo', city: 'TOKYO GINZA', address: '6-10-1 Ginza, Chuo-ku, Tokyo 104-0061', hours: 'Daily: 11:00 – 20:00', phone: '+81 3 5555 0143', img: images.showroom_tokyo },
-  { id: 'ny', city: 'NEW YORK SOHO', address: '120 Spring Street, New York, NY 10012', hours: 'Mon–Sat: 11:00 – 19:00', phone: '+1 212 555 0188', img: images.showroom_ny }
+  { 
+    id: 'london', 
+    city: 'LONDON MAYFAIR', 
+    address: '42 Mount Street, Mayfair, London W1K 2RX', 
+    hours: 'Mon–Sat: 10:00 – 19:00', 
+    phone: '+44 20 7946 0912', 
+    img: images.showroom_london,
+    mapEmbed: 'https://maps.google.com/maps?q=42%20Mount%20Street,%20Mayfair,%20London&t=&z=15&ie=UTF8&iwloc=&output=embed'
+  },
+  { 
+    id: 'tokyo', 
+    city: 'TOKYO GINZA', 
+    address: '6-10-1 Ginza, Chuo-ku, Tokyo 104-0061', 
+    hours: 'Daily: 11:00 – 20:00', 
+    phone: '+81 3 5555 0143', 
+    img: images.showroom_tokyo,
+    mapEmbed: 'https://maps.google.com/maps?q=6-10-1%20Ginza,%20Chuo%20City,%20Tokyo&t=&z=15&ie=UTF8&iwloc=&output=embed'
+  },
+  { 
+    id: 'ny', 
+    city: 'NEW YORK SOHO', 
+    address: '120 Spring Street, New York, NY 10012', 
+    hours: 'Mon–Sat: 11:00 – 19:00', 
+    phone: '+1 212 555 0188', 
+    img: images.showroom_ny,
+    mapEmbed: 'https://maps.google.com/maps?q=120%20Spring%20Street,%20New%20York,%20NY&t=&z=15&ie=UTF8&iwloc=&output=embed'
+  }
 ]
 
 const faqs = [
@@ -60,6 +117,28 @@ const Contact = () => {
                   <a href="mailto:press@saltandspice.example" className="text-xs sm:text-sm tracking-wider text-charcoal hover:text-spice transition-colors font-medium block truncate">
                     press@saltandspice.example
                   </a>
+                </div>
+
+                {/* Social Channels */}
+                <div className="p-5 sm:p-6 bg-sand/20 border border-charcoal/10 space-y-3">
+                  <h4 className="text-[10px] tracking-widest text-charcoal/50 uppercase font-semibold">FOLLOW OUR JOURNEY</h4>
+                  <div className="flex items-center space-x-3 text-charcoal pt-1">
+                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="w-9 h-9 rounded-full border border-charcoal/20 bg-ivory flex items-center justify-center hover:bg-spice hover:border-spice hover:text-ivory transition-all duration-300 group">
+                      <InstagramIcon className="w-4 h-4 group-hover:scale-110 transition-transform" />
+                    </a>
+                    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="w-9 h-9 rounded-full border border-charcoal/20 bg-ivory flex items-center justify-center hover:bg-spice hover:border-spice hover:text-ivory transition-all duration-300 group">
+                      <FacebookIcon className="w-4 h-4 group-hover:scale-110 transition-transform" />
+                    </a>
+                    <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="w-9 h-9 rounded-full border border-charcoal/20 bg-ivory flex items-center justify-center hover:bg-spice hover:border-spice hover:text-ivory transition-all duration-300 group">
+                      <TwitterIcon className="w-4 h-4 group-hover:scale-110 transition-transform" />
+                    </a>
+                    <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="w-9 h-9 rounded-full border border-charcoal/20 bg-ivory flex items-center justify-center hover:bg-spice hover:border-spice hover:text-ivory transition-all duration-300 group">
+                      <YoutubeIcon className="w-4 h-4 group-hover:scale-110 transition-transform" />
+                    </a>
+                    <a href="https://pinterest.com" target="_blank" rel="noopener noreferrer" aria-label="Pinterest" className="w-9 h-9 rounded-full border border-charcoal/20 bg-ivory flex items-center justify-center hover:bg-spice hover:border-spice hover:text-ivory transition-all duration-300 group">
+                      <PinterestIcon className="w-4 h-4 group-hover:scale-110 transition-transform" />
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -146,7 +225,7 @@ const Contact = () => {
               ))}
             </div>
 
-            <div className="lg:col-span-7 bg-sand/10 border border-charcoal/10 p-8 md:p-12 flex flex-col md:flex-row gap-8 items-center">
+            <div className="lg:col-span-7 bg-sand/10 border border-charcoal/10 p-8 md:p-12 flex flex-col md:flex-row gap-8 items-center shadow-sm">
               <div className="w-full md:w-1/2 aspect-square overflow-hidden bg-sand/30">
                 <img src={activeShowroom.img} alt={activeShowroom.city} className="w-full h-full object-cover" />
               </div>
@@ -176,16 +255,40 @@ const Contact = () => {
                 {!bookingConfirmed ? (
                   <button 
                     onClick={() => setBookingConfirmed(true)}
-                    className="w-full bg-charcoal text-ivory py-3 font-sans text-xs tracking-widest hover:bg-spice transition-colors"
+                    className="w-full bg-charcoal text-ivory py-3 font-sans text-xs tracking-widest hover:bg-spice transition-colors font-medium shadow-sm"
                   >
                     BOOK TASTING APPOINTMENT
                   </button>
                 ) : (
-                  <div className="p-3 bg-sand/40 border border-charcoal/20 text-center font-sans text-xs text-charcoal">
+                  <div className="p-3 bg-sand/40 border border-charcoal/20 text-center font-sans text-xs text-charcoal font-medium">
                     ✓ Tasting appointment reserved for {activeShowroom.city}!
                   </div>
                 )}
               </div>
+            </div>
+          </div>
+
+          {/* Interactive Showroom Location Map Embed */}
+          <div className="w-full mt-12 overflow-hidden border border-charcoal/15 shadow-sm">
+            <div className="bg-charcoal text-ivory px-6 py-3.5 flex justify-between items-center text-xs font-sans">
+              <span className="tracking-widest uppercase font-medium flex items-center text-sand">
+                <MapPin className="w-4 h-4 text-spice mr-2" />
+                {activeShowroom.city} — INTERACTIVE LOCATION MAP
+              </span>
+              <span className="text-sand/60 text-[11px] hidden sm:inline">{activeShowroom.address}</span>
+            </div>
+            <div className="w-full h-80 sm:h-[400px] bg-sand/20 relative">
+              <iframe 
+                title={`Map for ${activeShowroom.city}`}
+                src={activeShowroom.mapEmbed}
+                width="100%" 
+                height="100%" 
+                style={{ border: 0 }} 
+                allowFullScreen="" 
+                loading="lazy" 
+                referrerPolicy="no-referrer-when-downgrade"
+                className="w-full h-full hover:opacity-100 transition-all duration-500"
+              />
             </div>
           </div>
         </section>

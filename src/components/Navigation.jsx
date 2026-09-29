@@ -9,7 +9,7 @@ const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const location = useLocation()
-  const isDarkHero = location.pathname === '/' || location.pathname === '/origins' || location.pathname === '/our-story' || location.pathname === '/ingredients'
+  const isDarkHero = location.pathname !== '/contact'
 
   useEffect(() => {
     const handleScroll = () => {
@@ -37,7 +37,7 @@ const Navigation = () => {
             clsx("py-6", isDarkHero ? "text-ivory" : "text-charcoal")
         )
       )}>
-        <div className="container mx-auto px-6 md:px-12 flex justify-between items-center">
+        <div className="max-w-[1600px] mx-auto px-6 md:px-12 flex justify-between items-center">
           <Link to="/" className="relative z-50" onClick={() => setMobileMenuOpen(false)}>
             <BrandLogo />
           </Link>

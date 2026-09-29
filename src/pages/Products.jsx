@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { useState } from 'react'
 import { images } from '../data/images'
-import { Search, SlidersHorizontal, Star, ShieldCheck, X, Check, ShoppingBag, Eye } from 'lucide-react'
+import { Search, SlidersHorizontal, Star, ShieldCheck, X, Check, ShoppingBag, Eye, Sparkles } from 'lucide-react'
 
 const allProducts = [
   { id: 1, name: 'BRITTANY FLEUR DE SEL', desc: 'Hand-harvested sea salt flakes with crisp texture & oceanic salinity.', img: images.prod_fleur_de_sel || images.salt, category: 'Salts', price: 18, rating: 5.0, reviews: 42, intensity: 'Mild Crisp', origin: 'Brittany, France', size: '150g Jar' },
@@ -46,7 +46,7 @@ const Products = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="bg-ivory pt-28 pb-24 text-charcoal min-h-screen relative overflow-x-hidden w-full"
+      className="bg-ivory pb-24 text-charcoal min-h-screen relative overflow-x-hidden w-full"
     >
       {/* Toast Notification */}
       <AnimatePresence>
@@ -63,20 +63,54 @@ const Products = () => {
         )}
       </AnimatePresence>
 
+      {/* CINEMATIC HERO SECTION WITH BACKGROUND IMAGE */}
+      <section className="min-h-[75vh] bg-charcoal text-ivory flex flex-col justify-center items-center text-center px-6 relative overflow-hidden pt-28 pb-16 mb-16">
+        <div className="absolute inset-0 z-0 opacity-35 pointer-events-none">
+          <img src={images.amber_pantry_storage || images.hero} alt="Curated Pantry Collection" className="w-full h-full object-cover scale-105" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-charcoal/40 to-charcoal" />
+        </div>
+        <div className="relative z-10 max-w-4xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="inline-flex items-center space-x-2 border border-sand/30 bg-black/40 backdrop-blur-md px-4 py-1.5 rounded-full text-xs tracking-widest uppercase mb-6 text-sand"
+          >
+            <Sparkles className="w-3.5 h-3.5 text-mustard" />
+            <span>ARTISANAL PANTRY HARVESTS 2026</span>
+          </motion.div>
+
+          <motion.h1 
+            initial={{ y: 40, opacity: 0 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="font-serif text-5xl sm:text-7xl md:text-8xl mb-6 text-ivory tracking-tight font-medium"
+          >
+            THE ATELIER<br/>
+            <span className="italic font-normal text-sand">COLLECTION.</span>
+          </motion.h1>
+
+          <motion.p
+            initial={{ y: 30, opacity: 0 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="font-sans text-xs sm:text-sm tracking-widest max-w-xl mx-auto text-sand/80 font-light leading-relaxed uppercase"
+          >
+            Single-origin finishing salts, vine-ripened peppercorns, and oak-smoked spices harvested for culinary precision.
+          </motion.p>
+        </div>
+      </section>
+
       <div className="max-w-[1600px] mx-auto px-4 sm:px-6 md:px-12 w-full box-border">
-        {/* SECTION 1: HERO HEADER & FILTER BAR */}
+        {/* SECTION 1: SEARCH & FILTER BAR */}
         <section className="mb-16 border-b border-charcoal/10 pb-12">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8">
             <div>
-              <span className="font-sans text-xs tracking-[0.25em] text-spice uppercase font-semibold block mb-2">CURATED PANTRY</span>
-              <h1 className="font-serif text-4xl sm:text-5xl md:text-7xl text-charcoal tracking-tight">THE COLLECTION</h1>
-              <p className="font-sans text-xs sm:text-sm text-charcoal/70 max-w-xl mt-3">
-                Single-origin salts, unrefined pepper, and small-batch spices harvested for culinary precision.
-              </p>
+              <span className="font-sans text-xs tracking-[0.25em] text-spice uppercase font-semibold block mb-1">CURATED PANTRY</span>
+              <h2 className="font-serif text-3xl sm:text-4xl text-charcoal tracking-tight">BROWSE HARVESTS</h2>
             </div>
 
             <div className="flex items-center space-x-4 w-full md:w-auto">
-              <div className="relative flex-1 md:w-72">
+              <div className="relative flex-1 md:w-80">
                 <Search className="w-4 h-4 absolute left-4 top-1/2 -translate-y-1/2 text-charcoal/40" />
                 <input 
                   type="text"
